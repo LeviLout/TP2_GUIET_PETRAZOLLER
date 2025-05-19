@@ -1,5 +1,7 @@
 package utilisateurtab;
 
+import java.util.regex.Pattern;
+
 public class UtilisateurTab {
 
     private String prenom;
@@ -7,11 +9,25 @@ public class UtilisateurTab {
     private String email;
     private String mdp;
 
+    // Regex pour valider un email
+    private static final Pattern EMAIL_PATTERN = Pattern.compile(
+            "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$"
+    );
+
     public UtilisateurTab(String prenom, String nom, String email, String mdp) {
+        if (!isValidEmail(email)) {
+            throw new IllegalArgumentException("Email invalide : " + email);
+        }
+        
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
         this.mdp = mdp;
+    }
+
+    //méthode pour retourner une erreur si l'adresse email n'est pas valide
+    private boolean isValidEmail(String email) {
+        return EMAIL_PATTERN.matcher(email).matches();
     }
 
     public String getPrenom() {

@@ -27,6 +27,16 @@ public class Principale {
 
         CalculTab calculTab = new CalculTab(tableau);
 
+        System.out.println("****Affichage Tableau****");
+        calculTab.affichageTableau();
+        System.out.println("****Total****");
+        System.out.println(calculTab.total());
+        System.out.println("****Moyenne****");
+        System.out.println(calculTab.moyenne());
+
+        System.out.println("****Médiane****");
+        System.out.println(calculTab.mediane());
+        System.out.println("****FIN PROGRAMME****");
 
     }
 }
