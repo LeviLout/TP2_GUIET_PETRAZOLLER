@@ -26,12 +26,12 @@ public class CalculTab {
         return Sum/tableau.size();
     }
 
-    public int mediane() {
+    public double mediane() {
         Collections.sort(tableau);
         if (tableau.size()%2 == 0) {
             int noteMiddle1 = tableau.get(tableau.size()/2 - 1);
             int noteMiddle2 = tableau.get(tableau.size()/2);
-            return (noteMiddle1 + noteMiddle2)/2;
+            return (double)(noteMiddle1 + noteMiddle2)/2;
         } else {
             return tableau.get(tableau.size()/2);
         }

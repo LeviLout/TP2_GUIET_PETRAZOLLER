@@ -7,22 +7,19 @@ public class UtilisateurTab {
     private String prenom;
     private String nom;
     private String email;
-    private String mdp;
 
     // Regex pour valider un email
     private static final Pattern EMAIL_PATTERN = Pattern.compile(
             "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$"
     );
 
-    public UtilisateurTab(String prenom, String nom, String email, String mdp) {
+    public UtilisateurTab(String prenom, String nom, String email) {
         if (!isValidEmail(email)) {
             throw new IllegalArgumentException("Email invalide : " + email);
         }
-        
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
-        this.mdp = mdp;
     }
 
     //méthode pour retourner une erreur si l'adresse email n'est pas valide
@@ -52,13 +49,5 @@ public class UtilisateurTab {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getMdp() {
-        return mdp;
-    }
-
-    public void setMdp(String mdp) {
-        this.mdp = mdp;
     }
 }
