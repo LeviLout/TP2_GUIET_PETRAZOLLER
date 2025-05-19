@@ -23,19 +23,40 @@ public class Principale {
 
         ArrayList<Integer> tableau = new ArrayList<>();
         int n = 0;
+        Scanner sc = new Scanner(System.in);
         int i;
 
         do {
-            logger.info("Veuillez entrer la taille du tableau");
-            Scanner sc = new Scanner(System.in);
-            n = sc.nextInt();
-        } while (n > 50);
+            logger.info("Veuillez entrer la taille du tableau (entre 1 et 50) :");
+            try {
+                n = sc.nextInt();
+                if (n <= 0 || n > 50) {
+                    logger.warning("Taille invalide. Entrez un entier entre 1 et 50.");
+                }
+            } catch (Exception e) {
+                logger.warning("Entrée invalide. Veuillez entrer un entier.");
+                sc.nextLine();
+                n = 0; // pour garder la condition du do-while fausse
+            }
+        } while (n <= 0 || n > 50);
+
         // REMPLISSAGE DE TABLEAU
-        logger.info("****DEBUT PROGRAMME****");
         for (i = 0; i < n; i++) {
-            logger.info("Veuillez entrer un nombre");
-            Scanner sc1 = new Scanner(System.in);
-            tableau.add(sc1.nextInt());
+            int note = -1;
+            while (note < 0 || note > 20) {
+                logger.info("Veuillez entrer une note entre 0 et 20 :");
+                try {
+                    Scanner sc1 = new Scanner(System.in);
+                    note = sc1.nextInt();
+                    if (note < 0 || note > 20) {
+                        logger.warning("Note invalide. Entrez un entier entre 0 et 20.");
+                    }
+                } catch (Exception e) {
+                    logger.warning("Entrée invalide. Veuillez entrer un entier.");
+                    note = -1; // pour rester dans la boucle
+                }
+            }
+            tableau.add(note);
         }
 
         CalculTab calculTab = new CalculTab(tableau);
@@ -46,7 +67,6 @@ public class Principale {
         System.out.println(calculTab.total());
         logger.info("****Moyenne****");
         System.out.println(calculTab.moyenne());
-
         logger.info("****Médiane****");
         System.out.println(calculTab.mediane());
 
