@@ -14,36 +14,40 @@ import java.util.Scanner;
 
 public class Principale {
 
-    public static void main(String[] args) {
-        System.out.println("****DEBUT PROGRAMME****");
+    //utilisation des logger pour les affichages
+    private static final Logger logger = Logger.getLogger(Principale.class.getName());
+
+
+    public static void main(String[] args) throws Exception {
+        logger.info("****DEBUT PROGRAMME****");
 
         ArrayList<Integer> tableau = new ArrayList<>();
         int n = 0;
         int i;
 
         do {
-            System.out.println("Veuillez entrer la taille du tableau");
+            logger.info("Veuillez entrer la taille du tableau");
             Scanner sc = new Scanner(System.in);
             n = sc.nextInt();
         } while (n > 50);
         // REMPLISSAGE DE TABLEAU
-        System.out.println("****DEBUT PROGRAMME****");
+        logger.info("****DEBUT PROGRAMME****");
         for (i = 0; i < n; i++) {
-            System.out.println("Veuillez entrer un nombre");
+            logger.info("Veuillez entrer un nombre");
             Scanner sc1 = new Scanner(System.in);
             tableau.add(sc1.nextInt());
         }
 
         CalculTab calculTab = new CalculTab(tableau);
 
-        System.out.println("****Affichage Tableau****");
+        logger.info("****Affichage Tableau****");
         calculTab.affichageTableau();
-        System.out.println("****Total****");
+        logger.info("****Total****");
         System.out.println(calculTab.total());
-        System.out.println("****Moyenne****");
+        logger.info("****Moyenne****");
         System.out.println(calculTab.moyenne());
 
-        System.out.println("****Médiane****");
+        logger.info("****Médiane****");
         System.out.println(calculTab.mediane());
 
         logger.info("Voulez-vous enregistrer ces résultats ? (O/N");
