@@ -23,30 +23,36 @@ public class UtilisateurTab {
     }
 
     //méthode pour retourner une erreur si l'adresse email n'est pas valide
-    private boolean isValidEmail(String email) {
+    public static boolean isValidEmail(String email) {
         return EMAIL_PATTERN.matcher(email).matches();
     }
 
+    //Retourne le prénom
     public String getPrenom() {
         return prenom;
     }
 
+    //Set le prénom
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
 
+    //Retourne le nom
     public String getNom() {
         return nom;
     }
 
+    //Set le nom
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    //Retourne l'e-mail
     public String getEmail() {
         return email;
     }
 
+    //Set l'e-mail
     public void setEmail(String email) {
         this.email = email;
     }
