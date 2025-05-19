@@ -72,10 +72,60 @@ public class CalculTabTest {
     @Test
     public void CalculMedianeDouble()
     {
-        //Ne peut pas fonctionner car
+        //Ne peut pas fonctionner car la liste demande des int et non des doubles donc impossible à lancer
 
-        //CalculTab calc = new CalculTab(new ArrayList<>(Arrays.asList(30.2, 10.1, 20.2)));
+        //Arrange
+        double premier=30.2;
+        double deuxieme=10.1;
+        double troisieme=20.2;
+
+        //Act
+        //CalculTab calc = new CalculTab(new ArrayList<>(Arrays.asList(premier, deuxieme, troisieme)));
+
+        //Assert
         //assertEquals(30.25, calc.mediane(), 0.001);
+    }
+
+    @Test
+    public void CalculMedianeString()
+        //test qui permet d'essayer de rentrer des strings dans le tableau
+    {
+        //Arrange
+        String dix="10";
+        String douze="12";
+        String vingt="20";
+
+        //Act
+        //CalculTab calc = new CalculTab(new ArrayList<>(Arrays.asList(dix, douze, vingt)));
+
+        //Assert
+        //assertEquals(31, calc.mediane(), 0.001);
+        //le test ne fonctionne pas car on a besoin d'entier et non de string, donc c'est bon !
+    }
+
+
+    @Test
+    public void CalculMedianeBoolean()
+    {
+        //Arrange
+
+        boolean un=true;
+        boolean deux=false;
+        boolean trois=true;
+
+        //Act
+        //CalculTab calc = new CalculTab(new ArrayList<>(Arrays.asList(un, deux, trois)));
+
+        //Assert
+        //assertEquals(31, calc.mediane(), 0.001);
+
+        //le test ne fonctionne pas car on a besoin d'entier et non de boolean, donc c'est bon !
+    }
+
+    @Test
+    public void CalculMedianeGrandsNombres()
+    {
+        //int un=Math.random();
     }
 
 }
