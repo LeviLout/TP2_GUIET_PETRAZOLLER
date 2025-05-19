@@ -2,10 +2,15 @@ package calcultableau;
 
 import org.junit.Test;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
+
+import static org.assertj.core.api.Assertions.*;
 
 public class CalculTabTest {
 
@@ -125,7 +130,56 @@ public class CalculTabTest {
     @Test
     public void CalculMedianeGrandsNombres()
     {
-        //int un=Math.random();
+        BigInteger premier = new BigInteger("12345678901234568901856180498461531");
+        BigInteger deuxieme = new BigInteger("274356123416506816801068408904849");
+        BigInteger troisieme = new BigInteger("123016510865168534563116840984860");
+
+        //CalculTab calc = new CalculTab(new ArrayList<>(Arrays.asList(premier, deuxieme, troisieme)));
+
+        //assertEquals(31, calc.mediane(), 0.001);
+
+        //le test ne fonctionne pas car on a besoin d'entier et non de BigInteger, ça ne passe pas
+    }
+
+    @Test
+    public void MoyenneAvecAssertJ() {
+        // Arrange
+        ArrayList<Integer> valeurs = new ArrayList<>(Arrays.asList(10, 20, 30));
+        CalculTab calc = new CalculTab(valeurs);
+
+        // Act
+        double moyenne = calc.moyenne();
+
+        // Assert
+        assertThat(moyenne)
+                .as("la moyenne des valeurs 10, 20 et 30 est 20.0")
+                .isEqualTo(20.0);
+    }
+
+    @Test
+    public void testMoyenneAvecListeMockee() {
+        // Arrange
+        ArrayList<Integer> mockList = mock(ArrayList.class);
+
+        when(mockList.size()).thenReturn(3);
+        when(mockList.get(0)).thenReturn(10);
+        when(mockList.get(1)).thenReturn(20);
+        when(mockList.get(2)).thenReturn(30);
+
+        CalculTab calc = new CalculTab(mockList);
+
+        // Act
+        double result = calc.moyenne();
+
+        // Assert
+        assertThat(result).isEqualTo(20.0);
+
+        // vérification des interactions
+        verify(mockList, times(1)).size();
+        verify(mockList, times(3)).get(anyInt());
+        verify(mockList).get(0);
+        verify(mockList).get(1);
+        verify(mockList).get(2);
     }
 
 }
